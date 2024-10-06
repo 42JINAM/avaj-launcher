@@ -1,6 +1,6 @@
 
 # Makefile
-
+FILE_NAME ?= scenario.txt
 # Java Compiler
 JC = javac
 
@@ -29,7 +29,7 @@ $(OUTPUT_DIR)/%.class: %.java
 
 # Rule to run the main class (adjust 'MainClass' to your main class name)
 run: all
-	$(JAVA) -cp $(OUTPUT_DIR) simulator.Simulator
+	$(JAVA) -cp $(OUTPUT_DIR) simulator.Simulator $(FILE_NAME)
 
 # Clean up generated class files
 clean:
