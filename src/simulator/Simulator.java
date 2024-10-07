@@ -3,16 +3,33 @@ package simulator;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import aircraft.Aircraft;
+import aircraft.AircraftFactory;
+import aircraft.Flyable;
 import coordinates.Coordinates;
+import weather.WeatherTower;
 
 public class Simulator {
   int iteration;
+  AircraftFactory aFactory;
+  WeatherTower wTower;
+  List<Flyable> aircrafts;
+
+  public Simulator() {
+    this.iteration = 0;
+    this.aFactory = new AircraftFactory();
+    this.wTower = new WeatherTower();
+    this.aircrafts = new ArrayList<>();
+  }
 
   void parsingAircrafts(String line) throws Exception {
     int longitude;
     int latitude;
     int height;
+
     String[] st = line.split(" ");
     if (st.length != 5)
       throw new IllegalArgumentException("The format must be TYPE NAME LONGITUDE LATITUDE HEIGHT");
@@ -25,9 +42,8 @@ public class Simulator {
       throw new IllegalArgumentException("The arguments must be intergers");
     }
     Coordinates coordinate = new Coordinates(longitude, latitude, height);
-    for (String part : st){
-      System.out.println(part);
-    }
+    Flyable aircraft = aFactory.newAircraft(st[0], st[1], coordinate);
+    aircrafts.add(aircraft);
   }
 
   void parsingScenario(String file) throws Exception {
@@ -43,13 +59,6 @@ public class Simulator {
       if (this.iteration <= 0)
         throw new IOException("wrong input format : first line of the file should contain a positive integer number");
       while ((tmp = reader.readLine()) != null) {
-        // try {
-
-        //   parsingAircrafts(tmp);
-        // } catch (Exception e) {
-        //   // TODO: handle exception
-        //   throw e;
-        // }
         parsingAircrafts(tmp);
       }
     } catch (IOException e) {
@@ -61,11 +70,15 @@ public class Simulator {
     }
 
   }
+  void run(){
+    WeatherTower weatherTower;
+
+  }
 
   public static void main(String[] argv) {
     if (argv.length < 1) {
       System.out.println("Usage: java simulator.Simulator [scenario.txt]\n");
-      return;
+      System.exit(1);
     }
     try {
       Simulator simulator = new Simulator();

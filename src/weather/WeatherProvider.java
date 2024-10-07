@@ -7,8 +7,16 @@ import coordinates.Coordinates;
  */
 public class WeatherProvider {
 
-    private String[] weather;
-    public String getCurrentWeather(Coordinates p_Coordiates){
-        return ("Nice Weather");
-    }
+  private final String[] weather = {"SUN","RAIN","FOG","SNOW"};
+  private static WeatherProvider wProvider;
+  private WeatherProvider(){
+  }
+  public static WeatherProvider getInstance(){
+    if (wProvider == null)
+      wProvider = new WeatherProvider();
+    return wProvider;
+  }
+  public String getCurrentWeather(Coordinates p_Coordiates) {
+    return ("Nice Weather");
+  }
 }
