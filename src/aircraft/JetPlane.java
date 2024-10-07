@@ -10,4 +10,9 @@ public class JetPlane extends Aircraft{
         super(p_id, p_name, p_Coordinates);
     }
     public void updateConditions(){};
+
+  public void print(String msg) {
+    super.printAircraft("JetPlane", msg);
+  }
+
 }

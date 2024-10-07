@@ -16,7 +16,7 @@ public class WeatherProvider {
       wProvider = new WeatherProvider();
     return wProvider;
   }
-  public String getCurrentWeather(Coordinates p_Coordiates) {
+  public String getCurrentWeather(Coordinates p_Coordinates) {
     return ("Nice Weather");
   }
 }

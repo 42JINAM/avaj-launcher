@@ -34,5 +34,6 @@ run: all
 # Clean up generated class files
 clean:
 	rm -rf $(OUTPUT_DIR)
+re: clean all
 
 .PHONY: all clean run

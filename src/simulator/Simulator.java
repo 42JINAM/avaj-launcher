@@ -70,9 +70,15 @@ public class Simulator {
     }
 
   }
-  void run(){
-    WeatherTower weatherTower;
 
+  void run() {
+    for (Flyable aircraft : this.aircrafts) {
+      aircraft.registerTower(this.wTower);
+      this.wTower.register(aircraft);
+    }
+    for (int i = 0; i != this.iteration; i++) {
+      this.wTower.changeWeather();
+    }
   }
 
   public static void main(String[] argv) {
@@ -83,6 +89,7 @@ public class Simulator {
     try {
       Simulator simulator = new Simulator();
       simulator.parsingScenario(argv[0]);
+      simulator.run();
       // System.out.println(argv);
       return;
     } catch (Exception e) {
