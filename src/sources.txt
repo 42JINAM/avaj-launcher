@@ -1,4 +1,0 @@
-simulator/Simulator.java
-coordinates/Coordinates.java
-aircraft/*.java
-tower/*.java
