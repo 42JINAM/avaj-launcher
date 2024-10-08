@@ -62,7 +62,6 @@ public class Simulator {
         parsingAircrafts(tmp);
       }
     } catch (IOException e) {
-      // TODO: handle exception
       throw new IOException(" Can not found file : " + file, e);
     } finally {
       if (reader != null)
@@ -90,7 +89,6 @@ public class Simulator {
       Simulator simulator = new Simulator();
       simulator.parsingScenario(argv[0]);
       simulator.run();
-      // System.out.println(argv);
       return;
     } catch (Exception e) {
       // TODO: handle exception

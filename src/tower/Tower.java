@@ -21,11 +21,12 @@ public class Tower {
   };
 
   public void unregister(Flyable p_flyable) {
+    Aircraft aircraft = (Aircraft) p_flyable;
     this.observers.remove(p_flyable);
+    aircraft.print(" registered from weather tower.");
   };
 
   protected void conditionChanged() {
-    System.out.println("hello it's conditionChanged");
     for (Flyable ele : observers) {
       Aircraft aircraft = (Aircraft) ele;
       aircraft.updateConditions();
