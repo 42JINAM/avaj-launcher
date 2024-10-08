@@ -23,7 +23,7 @@ public class Tower {
   public void unregister(Flyable p_flyable) {
     Aircraft aircraft = (Aircraft) p_flyable;
     this.observers.remove(p_flyable);
-    aircraft.print(" registered from weather tower.");
+    aircraft.print(" unregistered from weather tower.");
   };
 
   protected void conditionChanged() {

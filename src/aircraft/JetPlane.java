@@ -21,6 +21,8 @@ public class JetPlane extends Aircraft {
     this.setFogWeather(fog, "The fog was so thick that when I was having my morning coffee, I asked my cup, 'Hello, who are you?'");
     this.setSnowWeather(snow, "On a snowy day, my cat thought, 'Now I'm a snowboarding champion!'");
 
+    String tmp = String.format("coordinates : %d, %d, %d ", this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight());
+    this.print(tmp);
     this.changeCoordinates("JetPlane");
   };
 
