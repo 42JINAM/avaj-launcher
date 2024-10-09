@@ -14,19 +14,19 @@ public class Tower {
     landed = new ArrayList<>();
   }
 
-  public void register(Flyable p_flyable) {
+  public void register(Flyable p_flyable) throws Exception{
     Aircraft aircraft = (Aircraft) p_flyable;
     this.observers.add(p_flyable);
     aircraft.print(" registered to weather tower.");
   };
 
-  public void unregister(Flyable p_flyable) {
+  public void unregister(Flyable p_flyable) throws Exception{
     Aircraft aircraft = (Aircraft) p_flyable;
     this.observers.remove(p_flyable);
     aircraft.print(" unregistered from weather tower.");
   };
 
-  protected void conditionChanged() {
+  protected void conditionChanged() throws Exception{
     for (Flyable ele : observers) {
       Aircraft aircraft = (Aircraft) ele;
       aircraft.updateConditions();

@@ -10,7 +10,7 @@ public class JetPlane extends Aircraft {
     super(p_id, p_name, p_Coordinates);
   }
 
-  public void updateConditions() {
+  public void updateConditions() throws Exception{
     int[]sun = {0, 10, 2};
     int[]rain = {0, 5, 0};
     int[]fog = {0, 1, 0};
@@ -26,7 +26,7 @@ public class JetPlane extends Aircraft {
     this.changeCoordinates("JetPlane");
   };
 
-  public void print(String msg) {
+  public void print(String msg) throws Exception{
     super.printAircraft("JetPlane", msg);
   }
 

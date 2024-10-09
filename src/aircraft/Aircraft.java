@@ -1,6 +1,7 @@
 package aircraft;
 
 import coordinates.Coordinates;
+import util.LogWriter;
 
 /**
  * Aircraft
@@ -50,22 +51,25 @@ public class Aircraft extends Flyable {
     this.snowMsg = str;
   }
 
-  public void updateConditions() {
+  public void updateConditions() throws Exception{
   };
 
   public Boolean hasLanded() {
     return coordinates.getHeight() == 0;
   }
 
-  protected void printAircraft(String type, String msg) {
-    System.out.printf("%s#%s(%d): %s\n", type, this.name, this.id, msg);
+  protected void printAircraft(String type, String msg) throws Exception{
+    
+    // System.out.printf("%s#%s(%d): %s\n", type, this.name, this.id, msg);
+    String ret = String.format("%s#%s(%d): %s\n", type, this.name, this.id, msg);
+    LogWriter myLog = LogWriter.getInstance();
+    myLog.log(ret);
   }
 
-  public void print(String str) {
-    System.out.println("this is an aircraft\n");
+  public void print(String str) throws Exception{
   };
 
-  protected void changeCoordinates(String type) {
+  protected void changeCoordinates(String type) throws Exception {
     String currentWeather = this.weatherTower.getWeather(this.coordinates);
 
     switch (currentWeather) {

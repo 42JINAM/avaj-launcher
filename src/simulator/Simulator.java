@@ -11,16 +11,19 @@ import aircraft.AircraftFactory;
 import aircraft.Flyable;
 import coordinates.Coordinates;
 import weather.WeatherTower;
+import util.LogWriter;
 
 public class Simulator {
   int iteration;
   AircraftFactory aFactory;
   WeatherTower wTower;
   List<Flyable> aircrafts;
+  String outputFile = "simulation.txt";
 
   public Simulator() {
     this.iteration = 0;
-    this.aFactory = new AircraftFactory();
+    // this.aFactory = new AircraftFactory();
+    this.aFactory = AircraftFactory.getInstance(); 
     this.wTower = new WeatherTower();
     this.aircrafts = new ArrayList<>();
   }
@@ -70,7 +73,7 @@ public class Simulator {
 
   }
 
-  void run() {
+  void run() throws Exception{
     for (Flyable aircraft : this.aircrafts) {
       aircraft.registerTower(this.wTower);
       this.wTower.register(aircraft);
@@ -80,7 +83,7 @@ public class Simulator {
     }
   }
 
-  public static void main(String[] argv) {
+  public static void main(String[] argv) throws Exception{
     if (argv.length < 1) {
       System.out.println("Usage: java simulator.Simulator [scenario.txt]\n");
       System.exit(1);
@@ -93,6 +96,8 @@ public class Simulator {
     } catch (Exception e) {
       // TODO: handle exception
       System.err.println("ERROR: " + e.getMessage());
+    } finally {
+      LogWriter.getInstance().close();
     }
 
   }

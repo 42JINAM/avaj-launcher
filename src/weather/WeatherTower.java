@@ -13,13 +13,13 @@ public class WeatherTower extends Tower{
   public String getWeather(Coordinates p_Coordiates) {
     return WeatherProvider.getInstance().getCurrentWeather(p_Coordiates);
   };
-  void unregisterLanded(){
+  void unregisterLanded() throws Exception{
     for (Flyable ele: this.landed){
       this.unregister(ele);
     }
     this.landed.clear();
   }
-  public void changeWeather(){
+  public void changeWeather() throws Exception{
     this.conditionChanged();
     this.unregisterLanded();
   }

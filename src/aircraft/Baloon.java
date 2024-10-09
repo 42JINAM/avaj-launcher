@@ -10,7 +10,7 @@ public class Baloon extends Aircraft {
     super(p_id, p_name, p_Coordinates);
   }
 
-  public void updateConditions() {
+  public void updateConditions() throws Exception{
     int[]sun = {2, 0, 4};
     int[]rain = {0, 0, -5};
     int[]fog = {0, 0, -3};
@@ -28,7 +28,7 @@ public class Baloon extends Aircraft {
 
   };
 
-  public void print(String msg) {
+  public void print(String msg) throws Exception{
     super.printAircraft("Baloon", msg);
   }
 }
