@@ -11,7 +11,7 @@ public class LogWriter {
 
   public LogWriter() throws Exception{
     try {
-      this.writer = new BufferedWriter(new FileWriter(outfile, true));
+      this.writer = new BufferedWriter(new FileWriter(outfile, false));
     } catch (Exception e) {
       throw new IOException("can't create simulation.txt file.");
     }
