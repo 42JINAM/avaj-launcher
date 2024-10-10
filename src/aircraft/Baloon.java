@@ -21,9 +21,8 @@ public class Baloon extends Aircraft {
     this.setFogWeather(fog,"With the thick fog, my friend asked, 'Where are we right now? Is this a deserted island?'");
     this.setSnowWeather(snow,"A dog running in the snow shouted, 'This is my snowball party!'");
 
-    String tmp = String.format("coordinates : %d, %d, %d ", this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight());
-    this.print(tmp);
-    
+    // String tmp = String.format("coordinates : %d, %d, %d ", this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight());
+    // this.print(tmp);
     this.changeCoordinates("Baloon");
 
   };

@@ -24,9 +24,9 @@ public class Helicopter extends Aircraft {
     this.setSnowWeather(snow,
         "It snowed so much that my friend asked, 'Did winter wonderland just move into my house?'");
 
-    String tmp = String.format("coordinates : %d, %d, %d ", this.coordinates.getLongitude(),
-        this.coordinates.getLatitude(), this.coordinates.getHeight());
-    this.print(tmp);
+    // String tmp = String.format("coordinates : %d, %d, %d ", this.coordinates.getLongitude(),
+    //     this.coordinates.getLatitude(), this.coordinates.getHeight());
+    // this.print(tmp);
     this.changeCoordinates("Helicopter");
 
   };
