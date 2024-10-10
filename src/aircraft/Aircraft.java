@@ -61,7 +61,7 @@ public class Aircraft extends Flyable {
   protected void printAircraft(String type, String msg) throws Exception{
     
     // System.out.printf("%s#%s(%d): %s\n", type, this.name, this.id, msg);
-    String ret = String.format("%s#%s(%d): %s\n", type, this.name, this.id, msg);
+    String ret = String.format("%s#%s(%d): %s", type, this.name, this.id, msg);
     LogWriter myLog = LogWriter.getInstance();
     myLog.log(ret);
   }
