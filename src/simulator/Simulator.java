@@ -23,7 +23,7 @@ public class Simulator {
   public Simulator() {
     this.iteration = 0;
     // this.aFactory = new AircraftFactory();
-    this.aFactory = AircraftFactory.getInstance(); 
+    this.aFactory = AircraftFactory.getInstance();
     this.wTower = new WeatherTower();
     this.aircrafts = new ArrayList<>();
   }
@@ -65,7 +65,8 @@ public class Simulator {
         parsingAircrafts(tmp);
       }
     } catch (IOException e) {
-      throw new IOException(" Can not found file : " + file, e);
+      // throw new IOException(" Can not found file : " + file, e);
+      throw e;
     } finally {
       if (reader != null)
         reader.close();
@@ -73,7 +74,7 @@ public class Simulator {
 
   }
 
-  void run() throws Exception{
+  void run() throws Exception {
     for (Flyable aircraft : this.aircrafts) {
       aircraft.registerTower(this.wTower);
       this.wTower.register(aircraft);
@@ -83,7 +84,7 @@ public class Simulator {
     }
   }
 
-  public static void main(String[] argv) throws Exception{
+  public static void main(String[] argv) throws Exception {
     if (argv.length < 1) {
       System.out.println("Usage: java simulator.Simulator [scenario.txt]\n");
       System.exit(1);
