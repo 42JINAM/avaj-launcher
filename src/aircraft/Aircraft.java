@@ -11,10 +11,10 @@ public class Aircraft extends Flyable {
   protected String name;
   protected Coordinates coordinates;
 
-  protected int[] sunMove;
-  protected int[] rainMove;
-  protected int[] fogMove;
-  protected int[] snowMove;
+  protected Coordinates sunMove;
+  protected Coordinates rainMove;
+  protected Coordinates fogMove;
+  protected Coordinates snowMove;
 
   protected String sunMsg;
   protected String rainMsg;
@@ -25,29 +25,25 @@ public class Aircraft extends Flyable {
     this.id = p_id;
     this.name = p_name;
     this.coordinates = p_coordinates;
-    this.sunMove = null;
-    this.rainMove = null;
-    this.fogMove = null;
-    this.snowMove = null;
+    this.sunMove = new Coordinates();
+    this.rainMove = new Coordinates();
+    this.fogMove = new Coordinates();
+    this.snowMove = new Coordinates();
   };
 
-  public void setSunWeather(int[] sunMove, String str) {
-    this.sunMove = sunMove;
+  public void setSunWeather(String str) {
     this.sunMsg = str;
   }
 
-  public void setRainWeather(int[] rainMove, String str) {
-    this.rainMove = rainMove;
+  public void setRainWeather(String str) {
     this.rainMsg = str;
   }
 
-  public void setFogWeather(int[] fogMove, String str) {
-    this.fogMove = fogMove;
+  public void setFogWeather(String str) {
     this.fogMsg = str;
   }
 
-  public void setSnowWeather(int[] snowMove, String str) {
-    this.snowMove = snowMove;
+  public void setSnowWeather(String str) {
     this.snowMsg = str;
   }
 
@@ -74,19 +70,19 @@ public class Aircraft extends Flyable {
 
     switch (currentWeather) {
       case "SUN":
-        this.coordinates.changeCoordinates(this.sunMove[0], this.sunMove[1], this.sunMove[2]);
+        this.coordinates.changeCoordinates(this.sunMove);
         this.printAircraft( type, this.sunMsg);
         break;
       case "RAIN":
-        this.coordinates.changeCoordinates(this.rainMove[0], this.rainMove[1], this.rainMove[2]);
+        this.coordinates.changeCoordinates(this.rainMove);
         this.printAircraft( type, this.rainMsg);
         break;
       case "FOG":
-        this.coordinates.changeCoordinates(this.fogMove[0], this.fogMove[1], this.fogMove[2]);
+        this.coordinates.changeCoordinates(this.fogMove);
         this.printAircraft( type, this.fogMsg);
         break;
       case "SNOW":
-        this.coordinates.changeCoordinates(this.snowMove[0], this.snowMove[1], this.snowMove[2]);
+        this.coordinates.changeCoordinates(this.snowMove);
         this.printAircraft( type, this.snowMsg);
         break;
       default:
