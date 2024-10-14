@@ -22,7 +22,6 @@ public class Simulator {
 
   public Simulator() {
     this.iteration = 0;
-    // this.aFactory = new AircraftFactory();
     this.aFactory = AircraftFactory.getInstance();
     this.wTower = new WeatherTower();
     this.aircrafts = new ArrayList<>();
@@ -41,7 +40,6 @@ public class Simulator {
       latitude = Integer.parseInt(st[3]);
       height = Integer.parseInt(st[4]);
     } catch (Exception e) {
-      // TODO: handle exception
       throw new IllegalArgumentException("The arguments must be intergers");
     }
     Coordinates coordinate = new Coordinates(longitude, latitude, height);
@@ -65,7 +63,6 @@ public class Simulator {
         parsingAircrafts(tmp);
       }
     } catch (IOException e) {
-      // throw new IOException(" Can not found file : " + file, e);
       throw e;
     } finally {
       if (reader != null)
@@ -95,7 +92,6 @@ public class Simulator {
       simulator.run();
       return;
     } catch (Exception e) {
-      // TODO: handle exception
       System.err.println("ERROR: " + e.getMessage());
     } finally {
       LogWriter.getInstance().close();
