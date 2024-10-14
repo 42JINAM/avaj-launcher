@@ -20,9 +20,15 @@ public class Helicopter extends Aircraft {
         "The fog was so thick that when I was having my morning coffee, I asked my cup, 'Hello, who are you?'");
     this.setSnowWeather("It snowed so much that my friend asked, 'Did winter wonderland just move into my house?'");
 
-    // String tmp = String.format("coordinates : %d, %d, %d ", this.coordinates.getLongitude(),
-    //     this.coordinates.getLatitude(), this.coordinates.getHeight());
-    // this.print(tmp);
+  }
+
+  public void updateConditions() throws Exception {
+    if (System.getenv("AVAJ_DEBUG") != null) {
+      String tmp = String.format("coordinates : %d, %d, %d ",
+          this.coordinates.getLongitude(), this.coordinates.getLatitude(),
+          this.coordinates.getHeight());
+      this.print(tmp);
+    }
     this.changeCoordinates("Helicopter");
 
   };

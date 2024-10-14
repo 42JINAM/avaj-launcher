@@ -21,13 +21,18 @@ public class Baloon extends Aircraft {
 
   }
 
-    // String tmp = String.format("coordinates : %d, %d, %d ", this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight());
-    // this.print(tmp);
+  public void updateConditions() throws Exception {
+    if (System.getenv("AVAJ_DEBUG") != null) {
+      String tmp = String.format("coordinates : %d, %d, %d ",
+          this.coordinates.getLongitude(), this.coordinates.getLatitude(),
+          this.coordinates.getHeight());
+      this.print(tmp);
+    }
     this.changeCoordinates("Baloon");
 
   };
 
-  public void print(String msg) throws Exception{
+  public void print(String msg) throws Exception {
     super.printAircraft("Baloon", msg);
   }
 }
